@@ -1,29 +1,29 @@
-name: CI/CD Pipeline
+name: CI Pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Checkout code
-      uses: actions/checkout@v3
+      - name: Debug files
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Files:"
+          ls -R
 
-    - name: Check HTML files
-      run: |
-        echo "Checking HTML files..."
-        ls
-        if [ ! -f index.html ]; then
-          echo "index.html not found!"
-          exit 1
-        fi
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: .
+      - name: Check index.html
+        run: |
+          if [ -f index.html ]; then
+            echo "index.html found ✅"
+          else
+            echo "index.html NOT found ❌"
+            exit 1
+          fi
