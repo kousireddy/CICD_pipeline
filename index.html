@@ -1,11 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My CI/CD App</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CI/CD Demo App</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <h1>CI/CD Pipeline Working!</h1>
-    <p>This is deployed automatically.</p>
+
+    <header>
+        <h1>CI/CD Pipeline Demo</h1>
+        <p>Automatically built and deployed using GitHub Actions</p>
+    </header>
+
+    <main>
+        <section class="card">
+            <h2>Status</h2>
+            <p>Your pipeline is working successfully.</p>
+        </section>
+
+        <section class="card">
+            <h2> Last Update</h2>
+            <p id="time"></p>
+        </section>
+
+        <section class="card">
+            <h2> Features</h2>
+            <ul>
+                <li>Automatic build</li>
+                <li>Continuous deployment</li>
+                <li>Version controlled</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer>
+        <p>Made with CI/CD </p>
+    </footer>
+
+    <script>
+        // Show current time (proves redeploy worked)
+        const now = new Date();
+        document.getElementById("time").innerText = now.toLocaleString();
+    </script>
+
 </body>
 </html>
